@@ -1,0 +1,5 @@
+openai-whisper==20231117
+fastapi==0.111.0
+aiofiles==23.2.1
+python-multipart
+numpy
