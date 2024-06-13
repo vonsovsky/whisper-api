@@ -7,6 +7,11 @@ Simple API for Whisper
 
 Make sure you have GPU acceleration configured and turned on.
 
+## Run
+
+    docker build --build-arg MODEL=small -t whisper-api .
+    docker run -p 8000:8000 -t whisper-api
+
 ## Usage
 
 /GET /status
