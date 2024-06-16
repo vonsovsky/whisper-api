@@ -1,22 +1,29 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: whisper
+  name: whisper-api
   labels:
-    app: web
+    app.kubernetes.io/name: whisper-api
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: web
+      app.kubernetes.io/instance: whisper
+      app.kubernetes.io/name: whisper-api
   template:
     metadata:
       labels:
-        app: web
+        app.kubernetes.io/instance: whisper
+        app.kubernetes.io/name: whisper-api
     spec:
       containers:
-        - name: whisper
-          image: vonsovsky/whisper-api:v0.1.0
+        - name: whisper-api-1
+          image: vonsovsky/whisper-api:v0.1.3-tiny
+          imagePullPolicy: Always
+          resources:
+            limits:
+              nvidia.com/gpu: 1
           ports:
-            - containerPort: 8080
+          - containerPort: 8080
+            name: http
+            protocol: TCP

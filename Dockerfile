@@ -7,7 +7,7 @@ ENV MODEL=$MODEL
 
 RUN apt update \
     && DEBIAN_FRONTEND=noninteractive apt install -y tzdata \
-    && apt install -y software-properties-common \
+    && apt install -y software-properties-common ffmpeg \
     && add-apt-repository -y ppa:deadsnakes/ppa \
     && apt update \
     && apt install -y python3-pip \
